@@ -1,0 +1,437 @@
+
+
+@font-face {
+    font-family: 'PT Sans';
+    src: url('/static/fonts/PT_Sans/PTSans-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'PT Sans';
+    src: url('/static/fonts/PT_Sans/PTSans-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'PT Sans';
+    src: url('/static/fonts/PT_Sans/PTSans-Italic.ttf') format('truetype');
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'PT Sans';
+    src: url('/static/fonts/PT_Sans/PTSans-BoldItalic.ttf') format('truetype');
+    font-weight: 700;
+    font-style: italic;
+    font-display: swap;
+}
+
+
+body {
+    font-family: 'PT Sans', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+:root {
+    --primary-color: #0d47a1;      /* темно-синий */
+    --primary-light: #007bff;      /* голубой */
+    --gray-color: #6c757d;         /* серый */
+    --bg-color: #f8f9fa;           /* фон */
+    --white-color: #ffffff;        /* выделяющий */
+    --accent-color: #007bff;
+}
+
+* {
+    font-family: 'PT Sans', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: var(--bg-color);
+    min-height: 100vh;
+}
+
+h1 {
+    font-size: 36px;
+    font-weight: 700;
+    font-family: 'PT Sans', sans-serif;
+}
+
+h2 {
+    font-size: 24px;
+    font-weight: 700;
+    font-family: 'PT Sans', sans-serif;
+}
+
+h3 {
+    font-size: 18px;
+    font-weight: 700;
+    font-family: 'PT Sans', sans-serif;
+}
+
+body, p, .main-text {
+    font-size: 16px;
+    font-family: 'PT Sans', sans-serif;
+}
+
+.small-text, .text-muted, .help-text, .form-text {
+    font-size: 12px;
+    font-style: italic;
+    font-family: 'PT Sans', sans-serif;
+}
+
+
+.navbar {
+    background: var(--primary-color) !important;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.15);
+}
+
+.navbar-brand {
+    font-weight: 700;
+    font-size: 1.3rem;
+    color: var(--white-color) !important;
+    font-family: 'PT Sans', sans-serif;
+}
+
+
+.nav-link {
+    color: rgba(255,255,255,0.85) !important;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.nav-link:hover {
+    color: var(--primary-light) !important;
+}
+
+.navbar-logo{
+    width: 42px;
+    height: 42px;
+    margin-right: 5px;
+}
+
+.main-container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+
+.card {
+    border: 1px solid var(--gray-color);
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    background: var(--white-color);
+}
+
+.card-header {
+    background: var(--primary-color);
+    color: var(--white-color);
+    border-radius: 12px 12px 0 0 !important;
+    font-weight: 600;
+    font-family: 'PT Sans', sans-serif;
+}
+
+.btn-primary {
+    background: var(--primary-color);
+    border: none;
+    font-weight: 500;
+    transition: background 0.15s, box-shadow 0.15s;
+}
+
+.btn-primary:hover {
+    background: var(--primary-light);
+    box-shadow: 0 4px 12px rgba(13, 71, 161, 0.4);
+}
+
+.btn-outline-primary {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+.btn-outline-primary:hover {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-accent {
+    background: var(--primary-light);
+    color: var(--white-color);
+    border: none;
+    font-weight: 600;
+}
+
+.btn-accent:hover {
+    background: var(--primary-color);
+    color: var(--white-color);
+}
+
+
+.badge-new { 
+    background-color: var(--primary-light); 
+}
+.badge-progress { 
+    background-color: #fd7e14; 
+}
+.badge-completed { 
+    background-color: #198754; 
+}
+
+
+input, textarea, select {
+    border: 1px solid var(--gray-color);
+    border-radius: 6px;
+    padding: 8px 12px;
+    font-family: 'PT Sans', sans-serif;
+    font-size: 16px;
+}
+
+input:focus, textarea:focus, select:focus {
+    border-color: var(--primary-light);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+}
+
+label {
+    font-weight: 500;
+    color: var(--primary-color);
+}
+
+
+.auth-card {
+    max-width: 480px;
+    margin: 3rem auto;
+}
+
+
+footer {
+    background: var(--primary-color);
+    color: rgba(255,255,255,0.7);
+    padding: 1.5rem 0;
+    margin-top: 3rem;
+}
+
+footer a {
+    color: var(--primary-light);
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: var(--white-color);
+}
+
+
+#notification-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 99999;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 380px;
+}
+
+.custom-notification {
+    display: flex;
+    align-items: center;
+    padding: 14px 18px;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 0.95rem;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    transform: translateX(120%);
+    opacity: 0;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease;
+}
+
+.custom-notification.notif-show {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.custom-notification.notif-hide {
+    transform: translateX(120%);
+    opacity: 0;
+}
+
+.notification-success {
+    background: linear-gradient(135deg, #198754, #20c997);
+}
+
+.notification-error {
+    background: linear-gradient(135deg, #dc3545, #e85d6a);
+}
+
+.notification-warning {
+    background: linear-gradient(135deg, #fd7e14, #ffc107);
+    color: #1a1a1a;
+}
+
+.notification-info {
+    background: linear-gradient(135deg, var(--primary-light), var(--primary-color));
+}
+
+.notif-icon {
+    font-size: 1.3rem;
+    margin-right: 12px;
+    flex-shrink: 0;
+}
+
+.notif-text {
+    flex: 1;
+    line-height: 1.4;
+}
+
+.notif-close {
+    background: none;
+    border: none;
+    color: inherit;
+    font-size: 1.4rem;
+    cursor: pointer;
+    margin-left: 12px;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+    line-height: 1;
+}
+
+.notif-close:hover {
+    opacity: 1;
+}
+
+
+
+.custom-slider-container {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto 30px auto;
+    overflow: hidden;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.custom-slider {
+    position: relative;
+    width: 100%;
+    height: 400px;
+}
+
+.custom-slider-slides {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.custom-slider-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.custom-slider-slide.active {
+    opacity: 1;
+    z-index: 1;
+}
+
+.custom-slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.5);
+    color: white;
+    border: none;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+    transition: background 0.3s;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.custom-slider-btn:hover {
+    background: rgba(0,0,0,0.8);
+}
+
+.btn-prev {
+    left: 20px;
+}
+
+.btn-next {
+    right: 20px;
+}
+
+
+.custom-slider-dots {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 10;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.5);
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.dot.active {
+    background: white;
+}
+
+
+@media (max-width: 768px) {
+    .custom-slider {
+        height: 250px;
+    }
+    
+    .custom-slider-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 16px;
+    }
+}
+
+
+.slider-overlay {
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+    right: 30px;
+    background: linear-gradient(90deg, rgba(0,0,0,0.7), transparent);
+    padding: 20px;
+    border-radius: 12px;
+    z-index: 5;
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .slider-overlay {
+        left: 15px;
+        right: 15px;
+        bottom: 60px;
+        padding: 10px;
+        font-size: 12px;
+    }
+}

@@ -1,0 +1,110 @@
+{% extends "courses/base.html" %}
+
+{% block title %}Панель администратора — Портал пассажирам РФ{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="mb-0"><i class="bi bi-gear me-2"></i>Панель администратора</h2>
+</div>
+
+<!-- фильтрация -->
+<div class="card mb-4">
+    <div class="card-body py-3">
+        <div class="d-flex align-items-center flex-wrap gap-2">
+            <span class="fw-semibold me-2"><i class="bi bi-funnel me-1"></i>Фильтр:</span>
+            <a href="{% url 'admin_panel' %}" 
+               class="btn btn-sm {% if not status_filter %}btn-primary{% else %}btn-outline-secondary{% endif %}">
+                Все
+            </a>
+            {% for value, label in status_choices %}
+                <a href="{% url 'admin_panel' %}?status={{ value }}" 
+                   class="btn btn-sm {% if status_filter == value %}btn-primary{% else %}btn-outline-secondary{% endif %}">
+                    {{ label }}
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<!-- заявки -->
+{% if applications %}
+<div class="card">
+    <div class="table-responsive">
+        <table class="table table-hover mb-0 align-middle">
+            <thead class="table-light">
+                <tr>
+                    <th>#</th>
+                    <th>Пользователь</th>
+                    <th>ФИО</th>
+                    <th>Курс</th>
+                    <th>Дата начала</th>
+                    <th>Оплата</th>
+                    <th>Статус</th>
+                    <th>Действие</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for app in applications %}
+                <tr>
+                    <td><strong>{{ app.id }}</strong></td>
+                    <td>{{ app.user.username }}</td>
+                    <td>
+                        {% if app.user.profile %}
+                            {{ app.user.profile.full_name }}
+                        {% else %}
+                            —
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if app.course == 'bus' %}
+                            <i class="bi bi-bus-front text-primary me-1"></i>
+                        {% elif app.course == 'electrobus' %}
+                            <i class="bi bi-ev-front text-success me-1"></i>
+                        {% else %}
+                            <i class="bi bi-train-front text-warning me-1"></i>
+                        {% endif %}
+                        {{ app.get_course_display }}
+                    </td>
+                    <td>{{ app.desired_date|date:"d.m.Y" }}</td>
+                    <td>{{ app.get_payment_method_display }}</td>
+                    <td>
+                        {% if app.status == 'new' %}
+                            <span class="badge badge-new rounded-pill px-2 py-1">Новая</span>
+                        {% elif app.status == 'in_progress' %}
+                            <span class="badge badge-progress rounded-pill px-2 py-1">Идет обучение</span>
+                        {% else %}
+                            <span class="badge badge-completed rounded-pill px-2 py-1">Завершено</span>
+                        {% endif %}
+                    </td>
+                    <td>
+                        <form method="post" class="d-flex gap-1 align-items-center">
+                            {% csrf_token %}
+                            <input type="hidden" name="app_id" value="{{ app.id }}">
+                            <select name="status" class="form-select form-select-sm" style="width: auto; min-width: 160px;">
+                                {% for value, label in status_choices %}
+                                    <option value="{{ value }}" {% if app.status == value %}selected{% endif %}>
+                                        {{ label }}
+                                    </option>
+                                {% endfor %}
+                            </select>
+                            <button type="submit" class="btn btn-sm btn-primary">
+                                <i class="bi bi-check-lg"></i>
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% else %}
+<div class="card">
+    <div class="card-body text-center py-5">
+        <i class="bi bi-inbox display-1 text-muted"></i>
+        <h4 class="mt-3 text-muted">Заявок не найдено</h4>
+        <p class="text-muted">Нет заявок, соответствующих выбранному фильтру</p>
+    </div>
+</div>
+{% endif %}
+{% endblock %}
